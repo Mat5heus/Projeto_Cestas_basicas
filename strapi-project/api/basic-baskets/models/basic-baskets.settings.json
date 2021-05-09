@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "basic_baskets",
+  "info": {
+    "name": "basic baskets",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "comum_users": {
+      "via": "basic_baskets",
+      "collection": "comum-user",
+      "dominant": true
+    },
+    "products": {
+      "collection": "products",
+      "via": "basic_baskets"
+    }
+  }
+}

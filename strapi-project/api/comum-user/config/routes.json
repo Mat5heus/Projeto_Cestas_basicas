@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/comum-users",
+      "handler": "comum-user.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/comum-users/count",
+      "handler": "comum-user.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/comum-users/:id",
+      "handler": "comum-user.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/comum-users",
+      "handler": "comum-user.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/comum-users/:id",
+      "handler": "comum-user.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/comum-users/:id",
+      "handler": "comum-user.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

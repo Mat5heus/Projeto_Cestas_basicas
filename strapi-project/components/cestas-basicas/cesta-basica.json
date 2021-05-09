@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_cestas_basicas_cesta_basicas",
+  "info": {
+    "name": "cesta basica",
+    "icon": "ambulance",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "pequena",
+        "media",
+        "grande"
+      ]
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "product": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.product"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

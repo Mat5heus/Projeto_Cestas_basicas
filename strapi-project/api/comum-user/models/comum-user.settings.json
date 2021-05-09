@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comum_users",
+  "info": {
+    "name": "comum-user",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "unique": true,
+      "required": true
+    },
+    "password": {
+      "type": "password"
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "bio": {
+      "type": "text"
+    },
+    "basic_baskets": {
+      "collection": "basic-baskets",
+      "via": "comum_users"
+    },
+    "basicBasket": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cestas-basicas.cesta-basica"
+    },
+    "comum_users": {
+      "collection": "comum-user",
+      "via": "friend_users",
+      "dominant": true
+    },
+    "friend_users": {
+      "collection": "comum-user",
+      "via": "comum_users"
+    }
+  }
+}
