@@ -21,7 +21,7 @@
 
       <v-spacer></v-spacer>
       
-      <LoginDialog/>
+      <LoginDialog :snack="snack" @onSnack="onSnackClick($event)"/>
       <SignInDialog/>
       <LogoutBtn/>
       <v-menu
@@ -52,6 +52,7 @@ export default {
      SignInDialog,
      LogoutBtn
   },
+  props: ['snack'],
   data() { 
     return { 
       title:"Associação de Assistencia",
@@ -66,7 +67,9 @@ export default {
     }
   },
   methods: {
-    
+    onSnackClick(event) {
+      
+    }
   }
 }
 </script>

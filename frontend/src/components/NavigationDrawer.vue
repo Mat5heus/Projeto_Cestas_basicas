@@ -106,8 +106,8 @@ export default {
         src:''
       },
       items: [
-        { title: 'Home', icon: 'mdi-view-dashboard', link:'/' },
-        { title: 'About', icon: 'mdi-forum', link:'/about' },
+        { title: 'Home', icon: 'mdi-view-dashboard', link:'/dashboard' },
+        { title: 'About', icon: 'mdi-forum', link:'/contact' },
       ],
       navOptions: [
         { title:'Inicio', link: '/dashboard'},

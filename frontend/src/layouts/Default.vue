@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavBar />
+    <NavBar :snack="snack" @onSnack="onSnackClick($event)"/>
     <Snackbar :snack="snack" @onSnack="onSnackClick($event)"/>
     <v-main>
       <slot/> 
@@ -25,8 +25,8 @@ export default {
   data: () => ({
     snack: {
       multiLine: true,
-      snackbar: true,
-      text: `O botao foi clicado!`,
+      snackbar: false,
+      text: ``,
     } 
   }),
   methods: {

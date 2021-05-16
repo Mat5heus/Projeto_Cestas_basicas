@@ -80,11 +80,7 @@
 import { GraphQLClient, gql } from 'graphql-request'
 
 export default {
-    components: {
-       
-    },
-    mounted() {
-    },
+    props: ['snack'],
     data () {
         return {
             show1: false,
@@ -128,9 +124,12 @@ export default {
                 $cookies.set("user", btoa(data.comumUsers[0].id), 3600*30)
                 window.location.href = '/dashboard'
                 console.log($cookies.keys())
+                this.snack.snackbar = true;
+                this.snack.text = "Login realizado com sucesso!"
             } else {
                 console.info("Email e/ou senha nao batem!")
-                this.snackbar = true;
+                this.snack.snackbar = true;
+                this.snack.text = "Senha e/ou email incorreto(s)"
             }
         },
     }
