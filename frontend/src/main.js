@@ -6,6 +6,7 @@ import 'vuetify/dist/vuetify.min.css'
 import DefaultLayout from '~/layouts/Default.vue'
 import VueCookies from 'vue-cookies'
 
+
 export default function (Vue, { appOptions, head }) {
   head.link.push({
     rel: 'stylesheet',
@@ -26,4 +27,5 @@ export default function (Vue, { appOptions, head }) {
   // Set default layout as a global component
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
+ 
 }

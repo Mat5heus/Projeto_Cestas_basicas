@@ -32,11 +32,11 @@
                             <v-row>
                                 <v-col>
                                     <v-file-input
-                                        v-model="file"
                                         label="Imagem de capa"
                                         solo
                                         prepend-icon="mdi-camera"
-                                        
+                                        @change="preview_image()"
+                                        v-model="image"
                                     ></v-file-input>
                                 </v-col>
                                 <v-col>
@@ -48,14 +48,14 @@
                                 </v-col>
                             </v-row>
                             <v-row>
-                                <v-col>
+                                <v-col cols="6">
                                     <v-img
                                         max-height="150"
                                         max-width="250"
-                                        :src="file"
+                                        :src="url"
                                     ></v-img>
                                 </v-col>
-                                <v-col>
+                                <v-col cols="6">
                                     <v-textarea
                                         solo
                                         label="Descrição"
@@ -64,10 +64,19 @@
                             </v-row>
                             <v-row>
                                 <v-col>
-                                    <v-btn
-                                       @click="mostrar()" 
+                                    <v-btn 
+                                       @click="save()" 
+                                       dark
                                     >
-                                        show
+                                        Cadastrar
+                                    </v-btn>
+                                </v-col>
+                                <v-col>
+                                    <v-btn
+                                       to="/dashboard"
+                                       dark
+                                    >
+                                        Cancelar
                                     </v-btn>
                                 </v-col>
                             </v-row>
@@ -87,13 +96,15 @@ export default {
     data() {
         return {
             sizes: ['Pequena','Média','Grande'],
-            file: null
+            image: null,
+            url: null
         }
     },
     methods: {
-        show() {
-            console.log(this.file)
+        preview_image() {
+            this.url = URL.createObjectURL(this.image)
         }
+
     }
 }
 </script>

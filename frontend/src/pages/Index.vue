@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <v-parallax
-         height="700"
+         height="800"
          :src="`http://localhost:1337${$static.index.background.url}`"
          :srcset="`http://localhost:1337${$static.index.background.formats.medium.url}`"
          :alt="$static.index.background.caption"
