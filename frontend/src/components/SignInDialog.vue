@@ -116,7 +116,9 @@ export default {
             const endpoint = 'http://localhost:1337/graphql'
 
             const graphQLClient = new GraphQLClient(endpoint)
-            const mutation = gql`mutation {
+            const mutation = gql`
+            
+            mutation {
                 createComumUser (input: {
                     data: {
                     Name:"${this.firstName} ${this.lastName}",

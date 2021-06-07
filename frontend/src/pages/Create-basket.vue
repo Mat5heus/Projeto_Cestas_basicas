@@ -17,15 +17,19 @@
                                 <v-col >
                                     <v-text-field
                                         placeholder="Titulo"
+                                        v-model="form.title"
                                         solo
                                         clearable
                                     ></v-text-field>
                                 </v-col>
                                 <v-col >
                                     <v-text-field
+                                        v-model="form.price"
                                         placeholder="Custo"
+                                        type="number"
                                         solo
                                         clearable
+                                        :rules="[v => v >= 0 || 'Valor deve ser igual ou maior que 0']"
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
@@ -36,11 +40,12 @@
                                         solo
                                         prepend-icon="mdi-camera"
                                         @change="preview_image()"
-                                        v-model="image"
+                                        v-model="form.image"
                                     ></v-file-input>
                                 </v-col>
                                 <v-col>
                                     <v-select
+                                        v-model="form.size"
                                         :items="sizes"
                                         label="Tamanho"
                                         solo
@@ -52,11 +57,12 @@
                                     <v-img
                                         max-height="150"
                                         max-width="250"
-                                        :src="url"
+                                        :src="preview_url"
                                     ></v-img>
                                 </v-col>
                                 <v-col cols="6">
                                     <v-textarea
+                                        v-model="form.description"
                                         solo
                                         label="Descrição"
                                     ></v-textarea>
@@ -89,20 +95,56 @@
 </template>
 <script>
 import NavigationCard from '~/components/NavigationDrawer.vue'
+import { GraphQLClient, gql } from 'graphql-request'
+
 export default {
     components: {
         NavigationCard
     },
     data() {
         return {
-            sizes: ['Pequena','Média','Grande'],
-            image: null,
-            url: null
+            sizes: ['Pequena','Media','Grande'],
+            preview_url: null,
+            form: {
+                title:'',
+                price:null,
+                description:'',
+                size:'',
+                image: null
+            }
         }
     },
     methods: {
         preview_image() {
-            this.url = URL.createObjectURL(this.image)
+            console.log(this.form.image)
+            this.preview_url = URL.createObjectURL(this.form.image)
+        },
+        async save() {
+            const endpoint = 'http://localhost:1337/graphql'
+
+            const graphQLClient = new GraphQLClient(endpoint)
+
+            const mutation = gql`mutation {
+                createBasicBasket ( input: {
+                    data: {
+                        title: "${this.form.title}",
+                        description: "${this.form.description}",
+                        price:${this.form.price},
+                        sizes:${this.form.size}
+                    }
+                }) {
+                    basicBasket {
+                        title
+                    }
+                }
+            }`
+                            
+            const data = await graphQLClient.request(mutation)
+
+            if (data.basicBasket[0].title == this.title) {
+                console.info("Sucesso!")
+            }
+            console.log(data)
         }
 
     }

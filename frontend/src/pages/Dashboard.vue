@@ -57,12 +57,17 @@
                     tile
                     >
                     <v-img 
+                        v-if="edge.node.image != null"
                         transition="fade-transition"
                         :src="`http://localhost:1337${edge.node.image.url}`"
                         :lazy-src="`http://localhost:1337${edge.node.image.formats.thumbnail.url}`"
                     >
-                        <!-- <ProgressCircular/> -->
                     </v-img>
+                    <v-icon
+                      v-else
+                      dark>
+                      mdi-account-circle
+                    </v-icon>
                     </v-avatar>
                   </div>
                 </v-card>

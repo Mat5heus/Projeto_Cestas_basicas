@@ -32,13 +32,21 @@
       "required": false
     },
     "comum_users": {
-      "via": "basic_baskets",
       "collection": "comum-user",
+      "via": "basic_baskets",
       "dominant": true
     },
     "products": {
       "collection": "products",
       "via": "basic_baskets"
+    },
+    "sizes": {
+      "type": "enumeration",
+      "enum": [
+        "Pequena",
+        "Media",
+        "Grande"
+      ]
     }
   }
 }

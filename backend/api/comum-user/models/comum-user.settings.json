@@ -40,8 +40,8 @@
       "type": "text"
     },
     "basic_baskets": {
-      "collection": "basic-baskets",
-      "via": "comum_users"
+      "via": "comum_users",
+      "collection": "basic-baskets"
     },
     "basicBasket": {
       "type": "component",
